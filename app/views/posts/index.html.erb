@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col s12 m12 l3">
+    <div class="row">
+      <%= render 'shared/userinfo' %>
+    </div>
+  </div>
+  <div class="col l1"></div>
+  <div class="col l8 s12 page-content center">
+    <div class="row">
+      <div class="card hoverable">
+        <div class="card-content">
+          <div class="row">
+            <div class="col m12">
+               <%= form_for @post, url: "/posts", :method => "post", remote: true do |f| %>
+              <div class="input-field">
+                <%= f.text_area :body, placeholder: "O que você está pensando?", class: "materialize-textarea col l9" %>
+              </div>
+              <%= f.submit "Enviar", class: "btn red lighten-2" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="btn-floating reload blue">
+          <i class="material-icons" style="font-size: 24px">replay</i>
+        </button>
+    </div>
+  
+
+    <div class="row" id="posts">
+      <% @posts.each do |post| %>
+        <%= render 'shared/post', post: post %>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="preloader-wrapper big active load" style="display: none">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

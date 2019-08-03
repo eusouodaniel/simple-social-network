@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Rede Social</title>
+	  <%= csrf_meta_tags %>
+
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+	</head>
+	 <body class="<%= controller_name %>-<%= action_name %>">
+	    <header>
+	      <%= render "shared/navbar" %>
+	    </header>
+	    <main>
+	      <div class="container">
+	        <%= yield %>
+	      </div>
+	    </main>
+	 
+	    <footer>
+	      <%= render "shared/footer" %>
+	    </footer>
+
+	    <% flash.each do |message_type, message| %>
+		  <% if message_type == 'alert' %>
+		    <%= javascript_tag "Materialize.toast('#{message}', 4000, 'red')" %>
+		  <% else message_type == 'notice' %>
+		    <%= javascript_tag "Materialize.toast('#{message}', 4000, 'green')" %>
+		  <% end %>
+		<% end %>
+	  </body>
+</html>
