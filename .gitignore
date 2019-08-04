@@ -5,5 +5,5 @@
 !/log/.keep
 /tmp
 /vendor
-Gemfile.lock
-public/uploads/*
+Gemfile.*
+/public/uploads/*
